@@ -2,7 +2,7 @@
 # Instala a extensão a partir desta pasta (uso local / desenvolvimento)
 set -e
 cd "$(dirname "$0")"
-UUID=topbar-dashboard@4rweb.net
+UUID=topbar-dashboard@willdeschepper.github.io
 DEST="$HOME/.local/share/gnome-shell/extensions/$UUID"
 mkdir -p "$DEST/schemas"
 cp extension.js prefs.js dashboard.js widgets.js services.js config.js \

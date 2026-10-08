@@ -1,12 +1,12 @@
 {
-  "uuid": "topbar-dashboard@4rweb.net",
+  "uuid": "topbar-dashboard@willdeschepper.github.io",
   "name": "Topbar Dashboard",
   "description": "A dashboard that slides out of the top bar, joined to it with curved corners. Includes weather, system info, a calendar with your GNOME events, CPU/RAM/disk usage and processor power draw, a media player (MPRIS) and a workspace switcher.\n\nInspired by the Caelestia shell. Automatically switches to a glass look when Blur my Shell blurs the top bar.\n\nWeather data comes from Open-Meteo (open-meteo.com). Your coordinates are sent to it only after you pick a city in the preferences. Showing processor power requires read access to /sys/class/powercap/intel-rapl:0/energy_uj (see the project page).",
   "shell-version": [
     "50"
   ],
-  "url": "https://github.com/4rweb/topbar-dashboard",
+  "url": "https://github.com/willdeschepper/topbar-dashboard",
   "settings-schema": "org.gnome.shell.extensions.topbar-dashboard",
   "version-name": "1.0",
-  "gettext-domain": "topbar-dashboard@4rweb.net"
+  "gettext-domain": "topbar-dashboard@willdeschepper.github.io"
 }

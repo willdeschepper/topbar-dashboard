@@ -2,7 +2,7 @@
 # Abre o simulador e reinicia ele sozinho sempre que um arquivo da extensão é salvo.
 # Edite os arquivos NESTA pasta: a cada salvamento ele reinstala e reabre o simulador.
 cd "$(dirname "$0")"
-UUID=topbar-dashboard@4rweb.net
+UUID=topbar-dashboard@willdeschepper.github.io
 
 ./install.sh
 
