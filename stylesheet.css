@@ -1,0 +1,153 @@
+/* Paleta (Material 3 escuro, no espírito do Caelestia)
+   fundo      #141218   precisa bater com BG_RGB em config.js
+   superfície #211f26
+   elevado    #2b2930
+   texto      #e6e0e9
+   texto 2    #cac4d0
+   primária   #d0bcff   sobre primária #381e72
+   terciária  #efb8c8 */
+
+/* Barra superior com a mesma cor do dashboard */
+#panel.wdt-panel { background-color: #141218; }
+#panel.wdt-panel:overview,
+#panel.wdt-panel.unlock-screen,
+#panel.wdt-panel.login-screen { background-color: transparent; }
+
+.wdt-card {
+  background-color: #141218;
+  border-radius: 0 0 24px 24px;
+  padding: 6px 16px 16px 16px;
+  spacing: 12px;
+  color: #e6e0e9;
+  font-size: 10.5pt;
+}
+
+.wdt-muted { color: #cac4d0; }
+
+/* Abas */
+.wdt-tab { padding: 6px 0; border-radius: 14px; color: #cac4d0; }
+.wdt-tab:hover { background-color: rgba(208, 188, 255, 0.08); }
+.wdt-tab:focus { background-color: rgba(208, 188, 255, 0.12); }
+.wdt-tab.active { color: #d0bcff; }
+.wdt-tab-content { spacing: 4px; }
+.wdt-tab-icon { icon-size: 18px; }
+.wdt-tab-label { font-size: 10pt; }
+.wdt-tab-track { height: 3px; }
+.wdt-tab-indicator { height: 3px; background-color: #d0bcff; border-radius: 3px 3px 0 0; }
+.wdt-separator { height: 1px; background-color: #49454f; }
+
+/* Grade */
+.wdt-page, .wdt-row, .wdt-col { spacing: 10px; }
+.wdt-tile { background-color: #211f26; border-radius: 18px; padding: 14px; }
+
+/* Clima */
+.wdt-weather { spacing: 12px; }
+.wdt-weather-icon { icon-size: 48px; color: #efb8c8; }
+.wdt-weather-temp { font-size: 24pt; font-weight: bold; color: #d0bcff; }
+
+/* Sistema */
+.wdt-sysinfo { spacing: 16px; }
+.wdt-avatar {
+  width: 72px; height: 72px; border-radius: 36px;
+  background-color: #2b2930; background-size: cover;
+}
+.wdt-info-col { spacing: 6px; }
+.wdt-info-row { spacing: 8px; }
+.wdt-info-icon { icon-size: 14px; color: #d0bcff; }
+
+/* Relógio */
+.wdt-clock-inner { spacing: 2px; }
+.wdt-clock-num { font-size: 26pt; font-weight: bold; }
+.wdt-clock-dots { font-size: 10pt; color: #d0bcff; }
+.wdt-clock-date { font-size: 9.5pt; color: #cac4d0; padding-top: 6px; }
+
+/* Calendário */
+.wdt-calendar { spacing: 4px; }
+.wdt-cal-header { spacing: 4px; }
+.wdt-cal-title { font-weight: bold; color: #d0bcff; }
+.wdt-cal-nav { border-radius: 999px; padding: 4px; color: #cac4d0; }
+.wdt-cal-nav:hover { background-color: #2b2930; color: #e6e0e9; }
+.wdt-cal-head { font-size: 9pt; font-weight: bold; color: #cac4d0; }
+.wdt-cal-day { width: 28px; height: 28px; border-radius: 14px; font-size: 9.5pt; color: #e6e0e9; }
+.wdt-cal-day:hover { background-color: #2b2930; }
+.wdt-cal-day.other { color: #6f6a77; }
+.wdt-cal-day.selected { border: 1px solid #d0bcff; }
+.wdt-cal-day.today { background-color: #d0bcff; color: #381e72; font-weight: bold; }
+.wdt-cal-inner { padding: 2px 0 3px 0; }
+.wdt-cal-dot-slot { width: 4px; height: 4px; }
+.wdt-cal-dot { width: 4px; height: 4px; border-radius: 2px; background-color: #d0bcff; }
+.wdt-cal-day.today .wdt-cal-dot { background-color: #381e72; }
+
+/* Evento do dia selecionado */
+.wdt-cal-event { spacing: 8px; padding-top: 4px; }
+.wdt-event-mark { width: 3px; border-radius: 2px; background-color: #d0bcff; }
+.wdt-cal-event-time { font-size: 9pt; font-weight: bold; color: #d0bcff; }
+.wdt-cal-event-summary { font-size: 9pt; }
+.wdt-cal-event-more { font-size: 8.5pt; color: #cac4d0; }
+.wdt-cal-event-empty { font-size: 9pt; }
+
+/* Barras verticais */
+.wdt-resources { spacing: 10px; }
+.wdt-power-row { spacing: 4px; }
+.wdt-power-icon { icon-size: 12px; color: #efb8c8; }
+.wdt-power { font-size: 10pt; font-weight: bold; color: #e6e0e9; }
+.wdt-bar-col { spacing: 8px; }
+.wdt-bar-track { border-radius: 5px; background-color: #2b2930; }
+.wdt-bar-fill { border-radius: 5px; background-color: #d0bcff; }
+.wdt-bar-fill.mem { background-color: #ccc2dc; }
+.wdt-bar-fill.disk { background-color: #efb8c8; }
+.wdt-bar-label { font-size: 8pt; color: #cac4d0; }
+
+/* Mídia */
+.wdt-media-inner { spacing: 10px; }
+.wdt-media.large .wdt-media-inner { spacing: 28px; padding: 0 12px; }
+.wdt-media-art {
+  border-radius: 999px;
+  background-color: #2b2930; background-size: cover;
+}
+.wdt-media.large .wdt-media-art { border-radius: 24px; }
+.wdt-media-art-icon { color: #6f6a77; }
+.wdt-media-info { spacing: 4px; }
+.wdt-media-title { font-weight: bold; color: #d0bcff; }
+.wdt-media.large .wdt-media-title { font-size: 18pt; }
+.wdt-media.large .wdt-muted { font-size: 12pt; }
+.wdt-media-album { font-size: 9pt; color: #938f99; }
+.wdt-media-controls { spacing: 6px; padding-top: 8px; }
+.wdt-media-btn { border-radius: 999px; padding: 7px; color: #e6e0e9; }
+.wdt-media-btn:hover { background-color: rgba(208, 188, 255, 0.12); }
+.wdt-media-btn.main { background-color: #d0bcff; color: #381e72; }
+.wdt-media-btn.main:hover { background-color: #e0d2ff; }
+
+/* Desempenho */
+.wdt-perf { spacing: 10px; }
+.wdt-perf-row { spacing: 16px; padding: 10px 18px; }
+.wdt-perf-name { font-weight: bold; }
+.wdt-perf-pct { font-weight: bold; color: #d0bcff; }
+.wdt-hbar-track { height: 12px; border-radius: 6px; background-color: #2b2930; }
+.wdt-hbar-fill { border-radius: 6px; background-color: #d0bcff; }
+.wdt-hbar-fill.mem { background-color: #ccc2dc; }
+.wdt-hbar-fill.swap { background-color: #b0a7c0; }
+.wdt-hbar-fill.disk { background-color: #efb8c8; }
+.wdt-hbar-fill.power { background-color: #f2b8a0; }
+
+/* Workspaces */
+.wdt-ws { border: 2px solid transparent; }
+.wdt-ws:hover { background-color: #2b2930; }
+.wdt-ws.active { border-color: #d0bcff; }
+.wdt-ws-content { spacing: 12px; }
+.wdt-ws-name { font-weight: bold; }
+.wdt-ws-icons { spacing: 8px; }
+
+/* ------------------------------------------------------------ Modo vidro
+   Ativado automaticamente quando o Blur my Shell desfoca a barra.
+   Blur, brilho e cor do fundo ficam em config.js (GLASS_FROM_BMS, GLASS_BLUR, GLASS_TINT).
+   Aqui ficam só os blocos internos por cima do vidro. */
+.wdt-card.glass .wdt-tile { background-color: rgba(255, 255, 255, 0.06); }
+.wdt-card.glass .wdt-separator { background-color: rgba(255, 255, 255, 0.12); }
+.wdt-card.glass .wdt-avatar,
+.wdt-card.glass .wdt-media-art,
+.wdt-card.glass .wdt-bar-track,
+.wdt-card.glass .wdt-hbar-track,
+.wdt-card.glass .wdt-cal-day:hover,
+.wdt-card.glass .wdt-cal-nav:hover,
+.wdt-card.glass .wdt-ws:hover { background-color: rgba(255, 255, 255, 0.09); }

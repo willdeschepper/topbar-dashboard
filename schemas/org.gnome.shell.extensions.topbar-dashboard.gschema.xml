@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.topbar-dashboard"
+          path="/org/gnome/shell/extensions/topbar-dashboard/">
+    <key name="weather-city" type="s">
+      <default>''</default>
+      <summary>Weather city</summary>
+      <description>Display name of the city used for weather. Empty means weather is disabled.</description>
+    </key>
+    <key name="weather-latitude" type="d">
+      <default>0</default>
+      <summary>Weather latitude</summary>
+    </key>
+    <key name="weather-longitude" type="d">
+      <default>0</default>
+      <summary>Weather longitude</summary>
+    </key>
+    <key name="show-power" type="b">
+      <default>false</default>
+      <summary>Show processor power</summary>
+      <description>Show processor power draw in watts. Needs read access to the RAPL energy sensor.</description>
+    </key>
+    <key name="cpu-power-max" type="i">
+      <range min="5" max="500"/>
+      <default>88</default>
+      <summary>Maximum processor power in watts</summary>
+      <description>Full scale of the power bar on the Performance tab.</description>
+    </key>
+  </schema>
+</schemalist>

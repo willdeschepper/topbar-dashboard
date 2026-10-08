@@ -1,0 +1,195 @@
+# Portuguese (Brazil) translation for Topbar Dashboard.
+# SPDX-License-Identifier: GPL-2.0-or-later
+msgid ""
+msgstr ""
+"Project-Id-Version: topbar-dashboard\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Dashboard"
+msgstr "Painel"
+
+msgid "Media"
+msgstr "Mídia"
+
+msgid "Performance"
+msgstr "Desempenho"
+
+msgid "Workspaces"
+msgstr "Workspaces"
+
+msgid "Weather"
+msgstr "Clima"
+
+msgid "Data from Open-Meteo. Your coordinates are only sent after you pick a city."
+msgstr "Dados da Open-Meteo. As coordenadas só são enviadas depois que você escolhe uma cidade."
+
+msgid "Current city"
+msgstr "Cidade atual"
+
+msgid "Remove city and turn weather off"
+msgstr "Remover cidade e desligar o clima"
+
+msgid "None (weather off)"
+msgstr "Nenhuma (clima desligado)"
+
+msgid "Search city"
+msgstr "Buscar cidade"
+
+msgid "Searching…"
+msgstr "Buscando…"
+
+msgid "No city found"
+msgstr "Nenhuma cidade encontrada"
+
+msgid "Search failed: %s"
+msgstr "Não foi possível buscar: %s"
+
+msgid "Processor power"
+msgstr "Consumo do processador"
+
+msgid "Shows how many watts the processor is drawing, read from its energy sensor (RAPL)."
+msgstr "Mostra quantos watts o processador está consumindo, lidos do sensor de energia dele (RAPL)."
+
+msgid "Show power draw"
+msgstr "Mostrar consumo"
+
+msgid "Sensor"
+msgstr "Sensor"
+
+msgid "Check again"
+msgstr "Verificar de novo"
+
+msgid "Maximum power (W)"
+msgstr "Consumo máximo (W)"
+
+msgid "Full scale of the power bar on the Performance tab. Use your processor limit: PPT on AMD, Maximum Turbo Power on Intel."
+msgstr "Escala da barra de consumo na aba Desempenho. Use o limite do seu processador: PPT na AMD, Maximum Turbo Power na Intel."
+
+msgid "Allow reading the sensor"
+msgstr "Liberar a leitura do sensor"
+
+msgid "By default only root can read the energy sensor. Run these commands in a terminal, then press the refresh button above.\n\nThe kernel restricts this sensor because, in theory, very fine energy readings can leak information about other programs (the Platypus attack). On a personal computer this is usually an accepted risk."
+msgstr "Por padrão, só o root pode ler o sensor de energia. Rode estes comandos num terminal e depois clique no botão de atualizar acima.\n\nO kernel restringe esse sensor porque, em tese, leituras muito finas de energia podem vazar informações de outros programas (o ataque Platypus). Num computador pessoal, esse costuma ser um risco aceito."
+
+msgid "Copy command"
+msgstr "Copiar comando"
+
+msgid "Command copied"
+msgstr "Comando copiado"
+
+msgid "Allow now (until reboot)"
+msgstr "Liberar agora (até reiniciar)"
+
+msgid "Keep allowed after reboot"
+msgstr "Manter liberado depois de reiniciar"
+
+msgid "Not available on this computer"
+msgstr "Não disponível neste computador"
+
+msgid "Found, but needs permission (see below)"
+msgstr "Encontrado, mas precisa de permissão (veja abaixo)"
+
+msgid "Ready until the next reboot (see below to keep it)"
+msgstr "Pronto até reiniciar (veja abaixo para manter)"
+
+msgid "Ready"
+msgstr "Pronto"
+
+msgid "Clear"
+msgstr "Céu limpo"
+
+msgid "Partly cloudy"
+msgstr "Poucas nuvens"
+
+msgid "Cloudy"
+msgstr "Nublado"
+
+msgid "Fog"
+msgstr "Neblina"
+
+msgid "Drizzle"
+msgstr "Garoa"
+
+msgid "Rain"
+msgstr "Chuva"
+
+msgid "Snow"
+msgstr "Neve"
+
+msgid "Thunderstorm"
+msgstr "Tempestade"
+
+msgid "up %s"
+msgstr "ligado há %s"
+
+msgid "Loading weather"
+msgstr "Buscando clima"
+
+msgid "Set a city in preferences"
+msgstr "Defina a cidade nas preferências"
+
+msgid "No events today"
+msgstr "Nenhum evento hoje"
+
+msgid "No events on %s"
+msgstr "Nenhum evento em %s"
+
+msgid "All day"
+msgstr "Dia todo"
+
+msgid "Untitled"
+msgstr "Sem título"
+
+msgid "Nothing playing"
+msgstr "Nada tocando"
+
+msgid "Open a music player"
+msgstr "Abra um player de música"
+
+msgid "Processor"
+msgstr "Processador"
+
+msgid "Power"
+msgstr "Consumo"
+
+msgid "Memory"
+msgstr "Memória"
+
+msgid "Swap"
+msgstr "Swap"
+
+msgid "Disk /"
+msgstr "Disco /"
+
+msgid "%s of %s"
+msgstr "%s de %s"
+
+msgid "No swap"
+msgstr "Sem swap"
+
+msgid "Sensor not readable"
+msgstr "Sem acesso ao sensor"
+
+msgid "Processor package"
+msgstr "Processador (pacote)"
+
+msgid "Workspace %d"
+msgstr "Área %d"
+
+msgid "Empty"
+msgstr "Vazia"
+
+msgid "%d core"
+msgid_plural "%d cores"
+msgstr[0] "%d núcleo"
+msgstr[1] "%d núcleos"
+
+msgid "%d window"
+msgid_plural "%d windows"
+msgstr[0] "%d janela"
+msgstr[1] "%d janelas"
+
