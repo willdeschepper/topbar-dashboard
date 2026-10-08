@@ -4,6 +4,14 @@ A GNOME Shell extension: a dashboard that slides out of the top bar, joined to i
 
 Supports GNOME 50. Available in English and Brazilian Portuguese (follows the system language).
 
+## Preview
+
+![Topbar Dashboard](assets/topbar-dashboard.png)
+
+![Performance tab](assets/topbar-performance-tab.png)
+
+![Preferences](assets/topbar-config.png)
+
 ## Weather
 
 Open the preferences and search for your city. Weather comes from [Open-Meteo](https://open-meteo.com). Nothing is sent until you pick a city.
