@@ -5,7 +5,7 @@
   "shell-version": [
     "50"
   ],
-  "url": "https://github.com/4rweb/topbar-dashboard",
+  "url": "https://github.com/willdeschepper/topbar-dashboard",
   "settings-schema": "org.gnome.shell.extensions.topbar-dashboard",
   "version-name": "1.0",
   "gettext-domain": "topbar-dashboard@4rweb.net"
