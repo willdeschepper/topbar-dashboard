@@ -117,11 +117,14 @@ export class SysInfoTile {
 
         this.actor.add_child(this._avatar);
         this.actor.add_child(col);
+        this.actor.connect('destroy', () => (this._destroyed = true));
         this.refresh();
     }
 
-    refresh() {
-        const info = getSysInfo();
+    async refresh() {
+        const info = await getSysInfo();
+        if (this._destroyed)
+            return;
         this._rows.os.text = info.os;
         this._rows.shell.text = info.shell;
         this._rows.uptime.text = info.uptime;

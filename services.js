@@ -8,11 +8,15 @@ import {gettext as _, ngettext} from 'resource:///org/gnome/shell/extensions/ext
 
 Gio._promisify(Soup.Session.prototype, 'send_and_read_async');
 Gio._promisify(Gio.DBusConnection.prototype, 'call');
+Gio._promisify(Gio.File.prototype, 'load_contents_async');
+Gio._promisify(Gio.File.prototype, 'enumerate_children_async');
+Gio._promisify(Gio.FileEnumerator.prototype, 'next_files_async');
 
 const decoder = new TextDecoder();
 
-function readText(path) {
-    const [, bytes] = GLib.file_get_contents(path);
+// Leitura assíncrona: o shell não pode travar esperando o disco
+async function readText(path) {
+    const [bytes] = await Gio.File.new_for_path(path).load_contents_async(null);
     return decoder.decode(bytes);
 }
 
@@ -96,18 +100,20 @@ export class WeatherService extends Signals.EventEmitter {
 /* ----------------------------------------------------------- Recursos */
 
 // Sensor de energia do processador (RAPL). No AMD o kernel também usa o nome intel-rapl.
-function findRaplPackage() {
+async function findRaplPackage() {
     const base = '/sys/class/powercap';
     try {
-        const en = Gio.File.new_for_path(base)
-            .enumerate_children('standard::name', Gio.FileQueryInfoFlags.NONE, null);
-        let info;
-        while ((info = en.next_file(null))) {
-            const path = `${base}/${info.get_name()}`;
-            try {
-                if (readText(`${path}/name`).trim() === 'package-0')
-                    return path;
-            } catch {}
+        const en = await Gio.File.new_for_path(base).enumerate_children_async(
+            'standard::name', Gio.FileQueryInfoFlags.NONE, GLib.PRIORITY_DEFAULT, null);
+        let infos;
+        while ((infos = await en.next_files_async(16, GLib.PRIORITY_DEFAULT, null)).length) {
+            for (const info of infos) {
+                const path = `${base}/${info.get_name()}`;
+                try {
+                    if ((await readText(`${path}/name`)).trim() === 'package-0')
+                        return path;
+                } catch {}
+            }
         }
     } catch {}
     return null;
@@ -123,14 +129,21 @@ export class ResourcesService extends Signals.EventEmitter {
         this._energyPrev = null;
         this.powerMax = 88;
         this.showPower = false;
-        this._rapl = findRaplPackage();
+        this._rapl = null;
         this._raplMax = 0;
-        if (this._rapl) {
-            try {
-                this._raplMax = Number(readText(`${this._rapl}/max_energy_range_uj`).trim());
-            } catch {}
-        }
+        this._polling = false;
+        this._initRapl();
         this._poll();
+    }
+
+    async _initRapl() {
+        const rapl = await findRaplPackage();
+        if (!rapl || this._destroyed)
+            return;
+        try {
+            this._raplMax = Number((await readText(`${rapl}/max_energy_range_uj`)).trim());
+        } catch {}
+        this._rapl = rapl;
     }
 
     start() {
@@ -151,14 +164,14 @@ export class ResourcesService extends Signals.EventEmitter {
     }
 
     // Watts = variação de energia (µJ) / variação de tempo (µs)
-    _readPower() {
+    async _readPower() {
         if (!this.showPower || !this._rapl) {
             this._power = null;
             this._energyPrev = null;
             return;
         }
         try {
-            const e = Number(readText(`${this._rapl}/energy_uj`).trim());
+            const e = Number((await readText(`${this._rapl}/energy_uj`)).trim());
             const t = GLib.get_monotonic_time();
             if (this._energyPrev) {
                 let de = e - this._energyPrev.e;
@@ -175,11 +188,15 @@ export class ResourcesService extends Signals.EventEmitter {
         }
     }
 
-    _poll() {
-        this._readPower();
+    async _poll() {
+        // Evita leituras sobrepostas se o disco demorar mais que o intervalo
+        if (this._polling)
+            return;
+        this._polling = true;
         try {
+            await this._readPower();
             // CPU: diferença entre duas leituras de /proc/stat
-            const stat = readText('/proc/stat').split('\n');
+            const stat = (await readText('/proc/stat')).split('\n');
             const n = stat[0].trim().split(/\s+/).slice(1).map(Number);
             const idle = n[3] + (n[4] ?? 0);
             const total = n.slice(0, 8).reduce((a, b) => a + b, 0);
@@ -193,7 +210,7 @@ export class ResourcesService extends Signals.EventEmitter {
 
             // Memória (kB → bytes)
             const mem = {};
-            for (const line of readText('/proc/meminfo').split('\n')) {
+            for (const line of (await readText('/proc/meminfo')).split('\n')) {
                 const m = line.match(/^(\w+):\s+(\d+)/);
                 if (m)
                     mem[m[1]] = Number(m[2]) * 1024;
@@ -216,13 +233,17 @@ export class ResourcesService extends Signals.EventEmitter {
                 watts: this._power,
                 power: this._power === null ? 0 : clamp(this._power / this.powerMax),
             };
-            this.emit('changed');
+            if (!this._destroyed)
+                this.emit('changed');
         } catch (e) {
             console.error(e);
+        } finally {
+            this._polling = false;
         }
     }
 
     destroy() {
+        this._destroyed = true;
         this.stop();
     }
 }
@@ -255,11 +276,11 @@ function formatUptime(s) {
     return _('up %s').format(parts.join(' '));
 }
 
-export function getSysInfo() {
+export async function getSysInfo() {
     if (!sysStatic) {
         let os = 'Linux';
         try {
-            const m = readText('/etc/os-release').match(/^PRETTY_NAME="?([^"\n]+)"?/m);
+            const m = (await readText('/etc/os-release')).match(/^PRETTY_NAME="?([^"\n]+)"?/m);
             if (m)
                 os = m[1];
         } catch {}
@@ -280,7 +301,7 @@ export function getSysInfo() {
 
     let uptime = '';
     try {
-        uptime = formatUptime(Math.floor(parseFloat(readText('/proc/uptime'))));
+        uptime = formatUptime(Math.floor(parseFloat(await readText('/proc/uptime'))));
     } catch {}
     return {...sysStatic, uptime};
 }

@@ -18,11 +18,11 @@ export default class TopbarDashboardExtension extends Extension {
             icon_name: 'view-grid-symbolic',
             style_class: 'system-status-icon',
         }));
-        this._button.connect('button-press-event', () => {
+        this._pressId = this._button.connect('button-press-event', () => {
             this._dashboard.toggle();
             return Clutter.EVENT_STOP;
         });
-        this._button.connect('touch-event', (_actor, event) => {
+        this._touchId = this._button.connect('touch-event', (_actor, event) => {
             if (event.type() !== Clutter.EventType.TOUCH_BEGIN)
                 return Clutter.EVENT_PROPAGATE;
             this._dashboard.toggle();
@@ -33,6 +33,11 @@ export default class TopbarDashboardExtension extends Extension {
     }
 
     disable() {
+        if (this._pressId)
+            this._button.disconnect(this._pressId);
+        if (this._touchId)
+            this._button.disconnect(this._touchId);
+        this._pressId = this._touchId = 0;
         this._button?.destroy();
         this._button = null;
         this._dashboard?.destroy();
