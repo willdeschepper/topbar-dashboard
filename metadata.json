@@ -7,6 +7,6 @@
   ],
   "url": "https://github.com/willdeschepper/topbar-dashboard",
   "settings-schema": "org.gnome.shell.extensions.topbar-dashboard",
-  "version-name": "1.0",
+  "version-name": "1.1",
   "gettext-domain": "topbar-dashboard@willdeschepper.github.io"
 }
